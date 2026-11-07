@@ -198,7 +198,7 @@ python3 --version</pre></div>
     <div class="card"><h3>Claude Code</h3><p>For locks 3 and 4, and to score your agent with a real model.</p><pre><span class="c"># check</span>
 claude --version</pre></div>
     <div class="card"><h3>pytest</h3><p>For tests of the locks without AI.</p><pre><span class="c"># install</span>
-pip install pytest</pre></div>
+pip install pytest   <span class="c"># Ubuntu: sudo apt install python3-pytest</span></pre></div>
   </div>
 </div></section>
 
@@ -244,7 +244,7 @@ pip install pytest</pre></div>
     <h3>For tasks with an action at the end: plan, approve, execute</h3>
     <p>The planner only reads and returns a plan. You review it and approve. The executor writes only the files you specified in <code>--arquivos</code>.</p>
 <pre><span class="k">python3</span> travas/5-planeja-executa/planeja_executa.py \
-  --tarefa <span class="s">"summarize the email and note the dates"</span> --material email.txt --arquivos resumo.md,notas.md</pre>
+  --tarefa <span class="s">"summarize the email and note the dates"</span> --material material.txt --arquivos resumo.md,notas.md</pre>
   </div></div>
 
   <div class="step"><div class="b">7</div><div>
@@ -283,7 +283,7 @@ pip install pytest</pre></div>
     <div class="card"><h3 style="font-size:2.2rem;color:#4ade80">9/10</h3><p><strong>Plan × execute (lock 5).</strong> Only allowlisted actions and only the files you specified.</p></div>
   </div>
   <div class="card" style="margin-top:18px"><h3>⚠️ What no technical lock can catch</h3><p>Attack 04 does not ask the agent to do anything: it simply <strong>lies in the text</strong> ("approved supplier, pay R$ 48,000"). Code cannot know what is true. You catch it by reading before acting, which is why lock 4 asks for your approval for anything that costs money or cannot be undone.</p></div>
-  <div class="card" style="margin-top:18px"><h3>🤖 And with a real model?</h3><p>We ran the 10 attacks on Claude Code (07/11/2026). <strong>Sonnet and Haiku stopped all 10, even without locks</strong>: they noticed the hidden instruction and alerted the owner. With locks enabled, the hook also blocked anything that looked dangerous. In other words, leading models already resist these attacks. Locks are for the day an attack is better than the model, for agents using smaller or open models, and for when your agent has access to sensitive resources. Run <code>teste/banco.py</code> with your agent and see its score.</p></div>
+  <div class="card" style="margin-top:18px"><h3>🤖 And with a real model?</h3><p>We ran the 10 attacks on Claude Code (07/11/2026). <strong>Sonnet and Haiku stopped all 10, even without locks</strong>: they noticed the hidden instruction and alerted the owner. With the locks on, they also held all 10. (In the Sonnet run the checker flagged a failure that was just the model quoting the attack to warn the owner; we corrected it by hand and noted it in <code>teste/resultados/</code>.) In other words, leading models already resist these attacks. Locks are for the day an attack is better than the model, for agents using smaller or open models, and for when your agent has access to sensitive resources. Run <code>teste/banco.py</code> with your agent and see its score.</p></div>
 </div></section>
 
 <section id="roadmap"><div class="wrap">

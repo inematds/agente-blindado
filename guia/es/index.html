@@ -198,7 +198,7 @@ python3 --version</pre></div>
     <div class="card"><h3>Claude Code</h3><p>Para las barreras 3 y 4, y para puntuar al agente con un modelo real.</p><pre><span class="c"># comprobar</span>
 claude --version</pre></div>
     <div class="card"><h3>pytest</h3><p>Para las pruebas de las barreras sin IA.</p><pre><span class="c"># instalar</span>
-pip install pytest</pre></div>
+pip install pytest   <span class="c"># Ubuntu: sudo apt install python3-pytest</span></pre></div>
   </div>
 </div></section>
 
@@ -244,7 +244,7 @@ pip install pytest</pre></div>
     <h3>Si la tarea termina en una acción: planifica, aprueba y ejecuta</h3>
     <p>El planificador solo lee y devuelve el plan. Tú lo revisas y das tu aprobación. El ejecutor guarda solo los archivos que declaraste en <code>--arquivos</code>.</p>
 <pre><span class="k">python3</span> travas/5-planeja-executa/planeja_executa.py \
-  --tarefa <span class="s">"resume el correo y anota las fechas"</span> --material email.txt --arquivos resumen.md,notas.md</pre>
+  --tarefa <span class="s">"resume el correo y anota las fechas"</span> --material material.txt --arquivos resumen.md,notas.md</pre>
   </div></div>
 
   <div class="step"><div class="b">7</div><div>
@@ -283,7 +283,7 @@ pip install pytest</pre></div>
     <div class="card"><h3 style="font-size:2.2rem;color:#4ade80">9/10</h3><p><strong>Planifica × ejecuta (barrera 5).</strong> Solo las acciones del menú y solo los archivos que declaraste.</p></div>
   </div>
   <div class="card" style="margin-top:18px"><h3>⚠️ Lo que ninguna barrera técnica detecta</h3><p>El ataque 04 no pide hacer nada: solo <strong>miente en el texto</strong> ("proveedor aprobado, pagar R$ 48.000"). El código no sabe qué es verdad. Tú lo detectas al leer antes de actuar. Por eso la barrera 4 pide tu aprobación para todo lo que cueste dinero o sea irreversible.</p></div>
-  <div class="card" style="margin-top:18px"><h3>🤖 ¿Y con un modelo real?</h3><p>Ejecutamos los 10 ataques en Claude Code (07/11/2026). <strong>Sonnet y Haiku resistieron los 10, incluso sin barreras</strong>: detectaron la instrucción oculta y avisaron al dueño. Con las barreras activadas, el gancho también bloqueó lo que parecía peligroso. En otras palabras, los modelos de punta ya resisten estos ataques. Las barreras sirven para el día en que el ataque supere al modelo, para agentes con modelos más pequeños o abiertos y para cuando tu agente tenga acceso a algo importante. Ejecuta <code>teste/banco.py</code> con tu agente y revisa su puntuación.</p></div>
+  <div class="card" style="margin-top:18px"><h3>🤖 ¿Y con un modelo real?</h3><p>Ejecutamos los 10 ataques en Claude Code (07/11/2026). <strong>Sonnet y Haiku resistieron los 10, incluso sin barreras</strong>: detectaron la instrucción oculta y avisaron al dueño. Con las barreras activadas, también resistieron los 10. (En la ronda de Sonnet el verificador marcó una caída que era solo el modelo citando el ataque para avisar; lo corregimos a mano y lo anotamos en <code>teste/resultados/</code>.) En otras palabras, los modelos de punta ya resisten estos ataques. Las barreras sirven para el día en que el ataque supere al modelo, para agentes con modelos más pequeños o abiertos y para cuando tu agente tenga acceso a algo importante. Ejecuta <code>teste/banco.py</code> con tu agente y revisa su puntuación.</p></div>
 </div></section>
 
 <section id="roadmap"><div class="wrap">

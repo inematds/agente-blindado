@@ -44,14 +44,29 @@ FERRAMENTA_PERIGOSA = re.compile(r"(send|enviar|delete|apagar|remove|pay|pagar|t
 ARQUIVO_SEGREDO = re.compile(r"(\.env($|\.)|id_rsa|id_ed25519|\.pem$|/\.ssh/|credentials)", re.I)
 
 
+HEREDOC = re.compile(r"<<-?\s*['\"]?(\w+)['\"]?[^\n]*\n.*?\n\s*\1\s*(\n|$)", re.S)
+
+
+def sem_texto_de_heredoc(cmd: str) -> str:
+    """Tira o corpo de heredoc que só grava texto (cat > arquivo <<EOF), para "e-mail" ou "rm" no texto não disparar.
+    Heredoc entregue a um interpretador (bash <<EOF, python3 <<EOF) continua sendo conferido inteiro."""
+    def troca(m):
+        antes = cmd[:m.start()].split("\n")[-1]
+        if re.search(r"\b(ba|z|da)?sh\b|\bpython3?\b|\bnode\b|\bperl\b|\bruby\b|\bpsql\b|\bmysql\b|\bsqlite3\b", antes):
+            return m.group(0)
+        return "<<TEXTO\n"
+    return HEREDOC.sub(troca, cmd)
+
+
 def avaliar(evento: dict):
     """Devolve (motivo) se a ação precisa do seu sim, ou None se pode seguir."""
     nome = evento.get("tool_name", "")
     entrada = evento.get("tool_input") or {}
     if nome == "Bash":
         cmd = entrada.get("command", "")
+        conferir = sem_texto_de_heredoc(cmd)
         for padrao, motivo in BASH_PERIGOSO:
-            if re.search(padrao, cmd, re.I):
+            if re.search(padrao, conferir, re.I):
                 return f"{motivo}: {cmd[:160]}"
         return None
     if nome in ("Write", "Edit", "MultiEdit", "NotebookEdit", "Read"):

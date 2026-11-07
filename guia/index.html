@@ -198,7 +198,7 @@ python3 --version</pre></div>
     <div class="card"><h3>Claude Code</h3><p>Para as travas 3 e 4 e para dar nota ao agente com modelo real.</p><pre><span class="c"># conferir</span>
 claude --version</pre></div>
     <div class="card"><h3>pytest</h3><p>Para os testes das travas sem IA.</p><pre><span class="c"># instalar</span>
-pip install pytest</pre></div>
+pip install pytest   <span class="c"># Ubuntu: sudo apt install python3-pytest</span></pre></div>
   </div>
 </div></section>
 
@@ -237,14 +237,15 @@ pip install pytest</pre></div>
   <div class="step"><div class="b">5</div><div>
     <h3>Embrulhe todo material de fora</h3>
     <p>Antes de mandar o agente ler um e-mail, página ou PDF, passe pelo envelope e entregue a saída.</p>
-<pre><span class="k">python3</span> travas/1-marcar-fora/envelope.py email.txt --origem <span class="s">"e-mail de fornecedor"</span> > material.txt</pre>
+<pre><span class="k">python3</span> travas/1-marcar-fora/envelope.py email.txt --origem <span class="s">"e-mail de fornecedor"</span> > material.txt   <span class="c"># entregue o material.txt ao agente</span></pre>
   </div></div>
 
   <div class="step"><div class="b">6</div><div>
     <h3>Tarefa com ação no fim: planeja, você aprova, executa</h3>
     <p>O planejador só lê e devolve o plano. Você vê e diz sim. O executor grava só os arquivos que você declarou em <code>--arquivos</code>.</p>
 <pre><span class="k">python3</span> travas/5-planeja-executa/planeja_executa.py \
-  --tarefa <span class="s">"resuma o e-mail e anote as datas"</span> --material email.txt --arquivos resumo.md,notas.md</pre>
+  --tarefa <span class="s">"resuma o e-mail e anote as datas"</span> --material material.txt --arquivos resumo.md,notas.md
+<span class="c"># o executor grava em ./saida/ da pasta atual (ou use --pasta &lt;pasta&gt;)</span></pre>
   </div></div>
 
   <div class="step"><div class="b">7</div><div>
@@ -283,7 +284,7 @@ pip install pytest</pre></div>
     <div class="card"><h3 style="font-size:2.2rem;color:#4ade80">9/10</h3><p><strong>Planeja × executa (trava 5).</strong> Só o cardápio e só os arquivos que você declarou.</p></div>
   </div>
   <div class="card" style="margin-top:18px"><h3>⚠️ O que nenhuma trava técnica pega</h3><p>O ataque 04 não manda fazer nada: ele só <strong>mente no texto</strong> ("fornecedor aprovado, pagar R$ 48.000"). Código não sabe o que é verdade. Quem pega é você lendo antes de agir, e é por isso que a trava 4 pede o seu sim em tudo que custa dinheiro ou não tem volta.</p></div>
-  <div class="card" style="margin-top:18px"><h3>🤖 E com um modelo de verdade?</h3><p>Rodamos os 10 ataques no Claude Code (07/11/2026). <strong>Sonnet e Haiku seguraram os 10, mesmo sem travas</strong>: perceberam a ordem escondida e avisaram o dono. Com as travas ligadas, o gancho ainda barrou o que parecia perigoso. Ou seja: os modelos de ponta já resistem a esses ataques. As travas são para o dia em que o ataque for melhor que o modelo, para agentes com modelos menores ou abertos, e para quando o seu agente tiver acesso a coisa séria. Rode o <code>teste/banco.py</code> com o seu agente e veja a nota dele.</p></div>
+  <div class="card" style="margin-top:18px"><h3>🤖 E com um modelo de verdade?</h3><p>Rodamos os 10 ataques no Claude Code (07/11/2026). <strong>Sonnet e Haiku seguraram os 10, mesmo sem travas</strong>: perceberam a ordem escondida e avisaram o dono. Com as travas ligadas, também seguraram os 10. (Na rodada do Sonnet o conferidor marcou uma queda que era só o modelo citando o ataque para avisar; corrigimos à mão e anotamos em <code>teste/resultados/</code>.) Ou seja: os modelos de ponta já resistem a esses ataques. As travas são para o dia em que o ataque for melhor que o modelo, para agentes com modelos menores ou abertos, e para quando o seu agente tiver acesso a coisa séria. Rode o <code>teste/banco.py</code> com o seu agente e veja a nota dele.</p></div>
 </div></section>
 
 <section id="roadmap"><div class="wrap">
