@@ -1,0 +1,10 @@
+{
+  "_sobre": "Trava 3 · perfil LEITOR: o agente lê, procura e resume. Não escreve, não roda comando, não acessa a internet.",
+  "permissions": {
+    "allow": ["Read", "Grep", "Glob"],
+    "deny": [
+      "Bash", "Write", "Edit", "NotebookEdit", "WebFetch", "WebSearch",
+      "Read(./.env)", "Read(./.env.*)", "Read(**/*.pem)", "Read(**/id_*)", "Read(~/.ssh/**)"
+    ]
+  }
+}

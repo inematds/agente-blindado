@@ -1,0 +1,16 @@
+{
+  "_sobre": "Trava 3 · perfil ESCRITOR: lê e edita arquivos do projeto e roda só comandos de teste/consulta. Nada de rede, push ou apagar.",
+  "permissions": {
+    "allow": [
+      "Read", "Grep", "Glob", "Edit", "Write",
+      "Bash(ls:*)", "Bash(cat:*)", "Bash(git status:*)", "Bash(git diff:*)", "Bash(git log:*)",
+      "Bash(python3 -m pytest:*)", "Bash(npm test:*)"
+    ],
+    "ask": ["Bash(git commit:*)", "Bash(mv:*)"],
+    "deny": [
+      "Bash(rm:*)", "Bash(git push:*)", "Bash(git reset --hard:*)", "Bash(curl:*)", "Bash(wget:*)",
+      "Bash(ssh:*)", "Bash(scp:*)", "Bash(sudo:*)", "WebFetch",
+      "Read(./.env)", "Read(./.env.*)", "Read(**/*.pem)", "Read(~/.ssh/**)"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+__pycache__/
+.pytest_cache/
+.agente-blindado.log
+teste/resultados/log-*.txt
