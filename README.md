@@ -16,6 +16,8 @@ Claude Code.
 
 Guia completo (landing + passo a passo): **https://inematds.github.io/agente-blindado/guia/**
 
+🎬 Vídeo: https://www.youtube.com/shorts/CxjmcmF-GWg
+
 ## Por quê
 
 **Prompt não é cadeado.** Se a única coisa que impede seu agente de IA de apagar, enviar ou vazar algo é uma frase no

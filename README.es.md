@@ -16,6 +16,8 @@ Claude Code.
 
 Guía completa (landing + paso a paso): **https://inematds.github.io/agente-blindado/guia/es/**
 
+🎬 Video: https://www.youtube.com/shorts/CxjmcmF-GWg
+
 ## Por qué
 
 **Un prompt no es un candado.** Si lo único que impide que tu agente de IA borre, envíe o filtre algo es una frase en el

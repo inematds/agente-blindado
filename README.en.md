@@ -16,6 +16,8 @@ Python 3 and, for the Claude Code locks, Claude Code itself.
 
 Complete guide (landing page + walkthrough): **https://inematds.github.io/agente-blindado/guia/en/**
 
+🎬 Video: https://www.youtube.com/shorts/CxjmcmF-GWg
+
 ## Why
 
 **A prompt is not a lock.** If the only thing stopping your AI agent from deleting, sending, or leaking something is a
